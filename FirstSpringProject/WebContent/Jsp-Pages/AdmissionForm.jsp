@@ -10,6 +10,7 @@
 <title>Addmission Form</title>
 </head>
 <body>
+<a href="/FirstSpringProject/admissionForm?siteLanguage=en">English</a> | <a href="/FirstSpringProject/admissionForm?siteLanguage=es">Spanish</a>
 	<h1 style="text-transform: capitalize">${headerMessgae}</h1>
 	<P style="text-transform: capitalize">Fill the addmission form</p>
 
