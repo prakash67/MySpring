@@ -10,11 +10,11 @@
 <title>Addmission Form</title>
 </head>
 <body>
-	<link rel="styleSheet" href="<spring:theme code='styleSheet'/>"
-		type="text/css" />
+	<link rel="styleSheet" href="<spring:theme code='styleSheet'/>"	type="text/css" />
 	<p>
-		<a href="/FirstSpringProject/admissionForm?siteTheme=green">Green</a>|<a
-			href="/FirstSpringProject/admissionForm?siteTheme=red">Red</a>
+		<a href="/FirstSpringProject/admissionForm?siteTheme=default">Default</a>
+		| <a href="/FirstSpringProject/admissionForm?siteTheme=green">Green</a>
+		| <a href="/FirstSpringProject/admissionForm?siteTheme=red">Red</a>
 	</p>
 
 
@@ -55,10 +55,9 @@
 
 			<tr>
 				<td><spring:message code="lable.gender" /></td>
-				<td><input type="radio" name="gender" value="male">
-				<spring:message code="lable.Male" /> <input type="radio"
-					name="gender" value="female">
-				<spring:message code="lable.Female" /></td>
+				<td><input type="radio" name="gender" value="male"> <spring:message
+						code="lable.Male" /> <input type="radio" name="gender"
+					value="female"> <spring:message code="lable.Female" /></td>
 			</tr>
 			<tr>
 				<td><spring:message code="lable.applicantMobile" /></td>

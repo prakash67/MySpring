@@ -17,7 +17,7 @@
 
 	<context:component-scan base-package="com.springcontroller"></context:component-scan>
 
-	<mvc:resources location="/WEB-INF/" mapping="/resources/**" />
+	<mvc:resources location="/resources/" mapping="/resources/**" />
 
 	<mvc:interceptors>
 		<mvc:interceptor>
@@ -60,7 +60,7 @@
 
 	<bean id="themeSource"
 		class="org.springframework.ui.context.support.ResourceBundleThemeSource">
-		<property name="basenamePrefix" value="theme-" />
+		<property name="basenamePrefix" value="com.resources.theme-" />
 	</bean>
 
 	<bean id="themeResolver"
