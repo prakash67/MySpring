@@ -3,15 +3,28 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Addmission Form</title>
 </head>
 <body>
-<a href="/FirstSpringProject/admissionForm?siteLanguage=en">English</a> | <a href="/FirstSpringProject/admissionForm?siteLanguage=es">Spanish</a>
+	<link rel="styleSheet" href="<spring:theme code='styleSheet'/>"
+		type="text/css" />
+	<p>
+		<a href="/FirstSpringProject/admissionForm?siteTheme=green">Green</a>|<a
+			href="/FirstSpringProject/admissionForm?siteTheme=red">Red</a>
+	</p>
+
+
+	<a href="/FirstSpringProject/admissionForm?siteLanguage=en">English</a>
+	|
+	<a href="/FirstSpringProject/admissionForm?siteLanguage=es">Spanish</a>
 	<h1 style="text-transform: capitalize">${headerMessgae}</h1>
+
+
+
 	<P style="text-transform: capitalize">Fill the addmission form</p>
 
 	<c:set var="Errors">
@@ -38,12 +51,14 @@
 			<tr>
 				<td><spring:message code="lable.applicantAge" /></td>
 				<td><input type="text" name="applicantAge"></td>
-			</tr> 
+			</tr>
 
 			<tr>
 				<td><spring:message code="lable.gender" /></td>
-				<td><input type="radio" name="gender" value="male" ><spring:message code="lable.Male" /> 
-					 <input type="radio" name="gender" value="female"><spring:message code="lable.Female" /> </td>
+				<td><input type="radio" name="gender" value="male">
+				<spring:message code="lable.Male" /> <input type="radio"
+					name="gender" value="female">
+				<spring:message code="lable.Female" /></td>
 			</tr>
 			<tr>
 				<td><spring:message code="lable.applicantMobile" /></td>
@@ -56,9 +71,12 @@
 			<tr>
 				<td><spring:message code="lable.applicantSkills" /></td>
 				<td><select name="applicantSkills" multiple>
-						<option value="Java Core"><spring:message code="lable.JavaCore" /></option>
-						<option value="Spring Core"><spring:message code="lable.SpringCore" /></option>
-						<option value="Spring MVC"><spring:message code="lable.SpringMVC" /></option>
+						<option value="Java Core"><spring:message
+								code="lable.JavaCore" /></option>
+						<option value="Spring Core"><spring:message
+								code="lable.SpringCore" /></option>
+						<option value="Spring MVC"><spring:message
+								code="lable.SpringMVC" /></option>
 				</select></td>
 			</tr>
 		</table>

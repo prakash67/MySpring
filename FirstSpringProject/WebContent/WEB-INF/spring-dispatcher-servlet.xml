@@ -17,16 +17,22 @@
 
 	<context:component-scan base-package="com.springcontroller"></context:component-scan>
 
+	<mvc:resources location="/WEB-INF/" mapping="/resources/**" />
+
 	<mvc:interceptors>
 		<mvc:interceptor>
 			<mvc:mapping path="/admissionForm" />
 			<bean class="com.interceptor.SiteInterceptor"></bean>
 		</mvc:interceptor>
-		
+
 		<bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
 			<property name="paramName" value="siteLanguage" />
 		</bean>
 
+		<bean id="themeChangeInterceptor"
+			class="org.springframework.web.servlet.theme.ThemeChangeInterceptor">
+			<property name="paramName" value="siteTheme" />
+		</bean>
 
 	</mvc:interceptors>
 
@@ -47,10 +53,20 @@
 		class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
 		<property name="basename" value="/Properties-Files/ErrorMessage" />
 	</bean>
-	<bean id="localeResolver" class="org.springframework.web.servlet.i18n.CookieLocaleResolver">
-	<property name="defaultLocale" value="es"></property>
+	<bean id="localeResolver"
+		class="org.springframework.web.servlet.i18n.CookieLocaleResolver">
+		<property name="defaultLocale" value="es"></property>
 	</bean>
 
-	<!-- <mvc:resources location="/resources/**" mapping="/assets/**" /> -->
+	<bean id="themeSource"
+		class="org.springframework.ui.context.support.ResourceBundleThemeSource">
+		<property name="basenamePrefix" value="theme-" />
+	</bean>
+
+	<bean id="themeResolver"
+		class="org.springframework.web.servlet.theme.CookieThemeResolver">
+		<property name="defaultThemeName" value="green" />
+	</bean>
+
 
 </beans>
