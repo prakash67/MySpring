@@ -15,7 +15,7 @@
 		<bean name="/welcome.html" class="com.firstTry.HelloController"/> -->
 	<!-- For using annotation follow these steps -->
 
-	<context:component-scan base-package="com.springcontroller"></context:component-scan>
+	<context:component-scan base-package="com"></context:component-scan>
 
 	<mvc:resources location="/resources/" mapping="/resources/**" />
 
@@ -67,6 +67,14 @@
 		class="org.springframework.web.servlet.theme.CookieThemeResolver">
 		<property name="defaultThemeName" value="green" />
 	</bean>
-
+	
+	  <bean id="simpleMappingExceptionResolver" class=
+     "org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+    <property name="exceptionMappings">
+      <map>
+         <entry key="Exception" value="Exception"/>
+      </map>
+    </property>
+</bean>
 
 </beans>
