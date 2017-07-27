@@ -68,13 +68,13 @@
 		<property name="defaultThemeName" value="green" />
 	</bean>
 	
-	  <bean id="simpleMappingExceptionResolver" class=
+<!-- 	  <bean id="simpleMappingExceptionResolver" class=
      "org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
     <property name="exceptionMappings">
       <map>
          <entry key="Exception" value="Exception"/>
       </map>
     </property>
-</bean>
+</bean> -->
 
 </beans>

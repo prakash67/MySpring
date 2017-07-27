@@ -42,7 +42,7 @@
 	</c:if>
 
 
-	<form action="/FirstSpringProject/admissionSubmission" method="post">
+	<form action="/FirstSpringProject/admissionSubmission" method="post" enctype="multipart/form-data">
 		<table>
 			<tr>
 				<td><spring:message code="lable.applicantName" /></td>

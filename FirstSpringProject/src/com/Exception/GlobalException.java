@@ -1,4 +1,4 @@
-package com.Exception;
+/*package com.Exception;
 
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -13,3 +13,4 @@ public class GlobalException {
 
 
 }
+*/

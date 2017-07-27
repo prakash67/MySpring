@@ -1,15 +1,10 @@
 package com.springImplementation;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
 import com.springBean.AdmissionBean;
-import com.springcontroller.AdmissionFormController;
 import com.springservice.AdmissionService;
 
 public class AdmissionServiceImpl implements AdmissionService {
 	
-	@Autowired
-	AdmissionFormController admissionFormController;
 
 	@Override
 	public String getadmission(AdmissionBean admissionBean) {

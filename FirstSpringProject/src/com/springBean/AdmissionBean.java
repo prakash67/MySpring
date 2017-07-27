@@ -14,25 +14,21 @@ import com.springInterface.ApplicantAddress;
 
 public class AdmissionBean {
 	
-	@Autowired
+	
 	private AdmissionBean admissionBean;
-	@Size(min = 4, max = 30)
-	@Pattern(regexp = "[^0-9]*")
+	
 	private String applicantName;
 
 	private long applicantAge;
 	
 	private String gender;
-
-	@IsVaildNumber(minLenth = 9, maxLenth = 12)
+	
 	private long applicantMobile;
-
-	@IsValidDate(minAge=18)
+	
 	private Date applicantDob;
 
 	private ArrayList<String> applicantSkills;
 
-	@Autowired
 	private ApplicantAddress applicantAddress;
 
 	public String getApplicantName() {

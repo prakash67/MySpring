@@ -3,14 +3,17 @@ package com.springcontroller;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Map;
 
 import javax.validation.Valid;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -24,21 +27,20 @@ import com.springservice.AdmissionService;
 @Controller
 public class AdmissionFormController {
 
+	
 	AdmissionService admissionservice;
 
-	@RequestMapping(value = "/admissionForm")
-	public ModelAndView admissionForm() {
 
+
+	@RequestMapping(value = "/admissionForm")
+	public ModelAndView admissionForm() throws Exception {
+
+/*		String exceptionOccured = "NULL_POINTER";
+		if(exceptionOccured.equalsIgnoreCase("NULL_POINTER")){
+			throw new NullPointerException("Null pointer exception");
+		}*/
 		ModelAndView modelAndView = new ModelAndView("AdmissionForm");
 		return modelAndView;
-	}
-
-	public AdmissionService getAdmissionservice() {
-		return admissionservice;
-	}
-
-	public void setAdmissionservice(AdmissionService admissionservice) {
-		this.admissionservice = admissionservice;
 	}
 
 	@ModelAttribute
@@ -74,24 +76,19 @@ public class AdmissionFormController {
 
 	@InitBinder
 	public void initBinder(WebDataBinder binder) throws ParseException {
-		binder.setDisallowedFields(new String[] { "applicantAge" });
+//		binder.setDisallowedFields(new String[] { "applicantAge" });
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		binder.registerCustomEditor(Date.class, "applicantDob",
 				new CustomDateEditor(dateFormat, true));
 		// binder.registerCustomEditor(String.class, "applicantName",
 		// new ApplicantFormValidator());
+
+	}
+
+
 	
-	}
-
-	public String admissionSubmission(@RequestBody AdmissionBean admissionBean) {
-		String result = admissionservice.getadmission(admissionBean);
-		return result;
-	}
-
-
-	@RequestMapping(value = "/admissionSubmission", method = RequestMethod.POST)
-	public ModelAndView admissionSubmission(
-			@Valid @ModelAttribute("admission") AdmissionBean admissionBean,
+	@RequestMapping(value = "/admissionSubmission", method = RequestMethod.POST , headers = "Content-Type=application/json")
+	public ModelAndView admissionSubmission(@RequestBody AdmissionBean admissionBean,
 			BindingResult result) {
 
 		/*
@@ -100,20 +97,22 @@ public class AdmissionFormController {
 		 * 
 		 * AdmissionBean admissionBean = new AdmissionBean();
 		 * admissionBean.setApplicantName(applicantName);
-		 * admissionBean.setApplicantAge(applicantAge); ModelAndView
-		 * modelAndView = new ModelAndView("AdmissionFromSubmission");
+		 * admissionBean.setApplicantAge(applicantAge); 
+		 * ModelAndView  modelAndView = new ModelAndView("AdmissionFromSubmission");
 		 * modelAndView.addObject("msg",admisssionBean);
 		 */
-
-		System.out.println(admissionBean.getApplicantDob() + "  "
-				+ admissionBean.getApplicantAge());
+		
+		System.out.println(admissionBean.getApplicantName());
+		
 		if (result.hasErrors()) {
 			ModelAndView modelAndView = new ModelAndView("AdmissionForm");
 			return modelAndView;
 		}
 
 		ModelAndView modelAndView = new ModelAndView("AdmissionFromSubmission");
+		
+		
 		return modelAndView;
 	}
-
+	
 }
