@@ -5,7 +5,6 @@ import com.springservice.AdmissionService;
 
 public class AdmissionServiceImpl implements AdmissionService {
 	
-
 	@Override
 	public String getadmission(AdmissionBean admissionBean) {
 

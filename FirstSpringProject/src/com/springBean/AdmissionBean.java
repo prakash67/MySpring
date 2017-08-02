@@ -3,36 +3,32 @@ package com.springBean;
 import java.util.ArrayList;
 import java.util.Date;
 
-import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;
-
-import org.springframework.beans.factory.annotation.Autowired;
-
-import com.annotationValidator.IsVaildNumber;
-import com.annotationValidator.IsValidDate;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.springInterface.ApplicantAddress;
 
+@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonIgnoreProperties({"applicantSkills"})
+@JsonPropertyOrder({"applicant_name", "applicantAge","gender", "applicantMobile", "applicantDob", "applicantSkills", "applicantAddress" })
 public class AdmissionBean {
-	
-	@Autowired
+
 	private AdmissionBean admissionBean;
-	@Size(min = 4, max = 30)
-	@Pattern(regexp = "[^0-9]*")
+
+	@JsonProperty("applicant_name")
 	private String applicantName;
 
 	private long applicantAge;
 	
 	private String gender;
 
-	@IsVaildNumber(minLenth = 9, maxLenth = 12)
 	private long applicantMobile;
 
-	@IsValidDate(minAge=18)
 	private Date applicantDob;
 
 	private ArrayList<String> applicantSkills;
 
-	@Autowired
 	private ApplicantAddress applicantAddress;
 
 	public String getApplicantName() {
