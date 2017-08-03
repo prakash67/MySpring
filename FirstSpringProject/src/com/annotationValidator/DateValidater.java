@@ -24,14 +24,14 @@ public class DateValidater implements ConstraintValidator<IsValidDate, Date> {
 		int eligibleYear = (currentDate.get(Calendar.YEAR) - minAge);
 		int eligibleMonth = (currentDate.get(Calendar.MONTH) + 1);
 		int eligibleDate = ((currentDate.get(Calendar.DAY_OF_MONTH)));
-		System.out.println(eligibleYear + " " + eligibleMonth + " "
-				+ eligibleDate);
+/*		System.out.println(eligibleYear + " " + eligibleMonth + " "
+				+ eligibleDate);*/
 
 		Calendar cal = Calendar.getInstance();
 		cal.setTime(date);
-		System.out.println(cal.get(Calendar.YEAR) + " "
+	/*	System.out.println(cal.get(Calendar.YEAR) + " "
 				+ (cal.get(Calendar.MONTH) + 1) + " "
-				+ cal.get(Calendar.DAY_OF_MONTH));
+				+ cal.get(Calendar.DAY_OF_MONTH));*/
 
 		if (cal.get(Calendar.YEAR) < eligibleYear) {
 			return true;

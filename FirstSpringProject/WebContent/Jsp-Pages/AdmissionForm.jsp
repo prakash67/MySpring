@@ -10,7 +10,8 @@
 <title>Addmission Form</title>
 </head>
 <body>
-	<link rel="styleSheet" href="<spring:theme code='styleSheet'/>"	type="text/css" />
+	<link rel="styleSheet" href="<spring:theme code='styleSheet'/>"
+		type="text/css" />
 	<p>
 		<a href="/FirstSpringProject/admissionForm?siteTheme=default">Default</a>
 		| <a href="/FirstSpringProject/admissionForm?siteTheme=green">Green</a>
@@ -42,16 +43,16 @@
 	</c:if>
 
 
-	<form action="/FirstSpringProject/admissionSubmission" method="post" >
+	<form action="/FirstSpringProject/admissionSubmission" method="post">
 		<table>
 			<tr>
 				<td><spring:message code="lable.applicantName" /></td>
 				<td><input type="text" name="applicantName"></td>
 			</tr>
-			<tr>
+			<%-- 			<tr>
 				<td><spring:message code="lable.applicantAge" /></td>
 				<td><input type="text" name="applicantAge"></td>
-			</tr>
+			</tr> --%>
 
 			<tr>
 				<td><spring:message code="lable.gender" /></td>

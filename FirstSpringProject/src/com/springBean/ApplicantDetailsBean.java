@@ -3,32 +3,28 @@ package com.springBean;
 import java.util.ArrayList;
 import java.util.Date;
 
-import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
+import org.codehaus.jackson.annotate.JsonProperty;
+import org.codehaus.jackson.annotate.JsonPropertyOrder;
 
-import com.annotationValidator.IsVaildNumber;
-import com.annotationValidator.IsValidDate;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.springInterface.ApplicantAddress;
 
+@JsonInclude(JsonInclude.Include.NON_EMPTY)
+@JsonIgnoreProperties({ "applicantSkills" })
+@JsonPropertyOrder({ "applicant_name", "applicantAge", "gender", "applicantMobile", "applicantDob", "applicantSkills",
+		"applicantAddress" })
+public class ApplicantDetailsBean {
 
-public class AdmissionBean {
-
-	@Size(min = 4, max = 30)
-	@Pattern(regexp = "[^0-9]*")
+	@JsonProperty("applicant_name")
 	private String applicantName;
 
 	private long applicantAge;
-	
+
 	private String gender;
 
-	@IsVaildNumber(minLenth = 9, maxLenth = 12)
 	private long applicantMobile;
 
-	@IsValidDate(minAge=18)
 	private Date applicantDob;
 
 	private ArrayList<String> applicantSkills;
@@ -36,12 +32,12 @@ public class AdmissionBean {
 	private ApplicantAddress applicantAddress;
 
 	public String getApplicantName() {
-		
+
 		return applicantName;
 	}
 
 	public void setApplicantName(String applicantName) {
-		
+
 		this.applicantName = applicantName;
 	}
 
@@ -92,7 +88,5 @@ public class AdmissionBean {
 	public void setGender(String gender) {
 		this.gender = gender;
 	}
-
-
 
 }

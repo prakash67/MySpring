@@ -6,6 +6,7 @@ import java.util.Date;
 
 import javax.validation.Valid;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,6 +24,7 @@ import com.springservice.AdmissionService;
 @Controller
 public class AdmissionFormController {
 
+	@Autowired
 	AdmissionService admissionservice;
 
 	@RequestMapping(value = "/admissionForm")
@@ -79,8 +81,7 @@ public class AdmissionFormController {
 	}
 
 	@RequestMapping(value = "/admissionSubmission", method = RequestMethod.POST)
-	public ModelAndView admissionSubmission(@Valid @ModelAttribute("admission") AdmissionBean admissionBean,
-			BindingResult result) {
+	public ModelAndView admissionSubmission(@Valid @Autowired AdmissionBean admissionBean, BindingResult result) {
 
 		/*
 		 * If we used @RequestParam instead of @Modelattribute we might write the code
@@ -92,15 +93,17 @@ public class AdmissionFormController {
 		 * ModelAndView("AdmissionFromSubmission");
 		 * modelAndView.addObject("msg",admisssionBean);
 		 */
-
 		if (result.hasErrors()) {
 			ModelAndView modelAndView = new ModelAndView("AdmissionForm");
 			return modelAndView;
 		}
+		admissionservice.getadmission(admissionBean);
+		admissionservice.currentDOB(admissionBean);
 
 		ModelAndView modelAndView = new ModelAndView("AdmissionFromSubmission");
 
-		return modelAndView;
+		return modelAndView.addObject("admission", admissionBean);
+
 	}
 
 }

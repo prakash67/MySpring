@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.springBean.AdmissionBean;
+import com.springBean.ApplicantDetailsBean;
 
 @RestController
 public class ApplicantRESTAPIController {
@@ -18,44 +18,46 @@ public class ApplicantRESTAPIController {
 	//*********** Retrieving all the applicants details*************//
 
 //	@ResponseBody  no need to specify if @RestController annotation is specified
-/*	@RequestMapping(value = "/applicants", method = RequestMethod.GET , produces= MediaType.APPLICATION_JSON_VALUE )
-	public ArrayList<AdmissionBean> getApplicantList() {
+	@ResponseBody 
+	@RequestMapping(value = "/applicants", method = RequestMethod.GET , produces= MediaType.APPLICATION_JSON_VALUE )
+	public ArrayList<ApplicantDetailsBean> getApplicantList() {
 
-		AdmissionBean applicant1 = new AdmissionBean();
+		ApplicantDetailsBean applicant1 = new ApplicantDetailsBean();
 		applicant1.setApplicantName("madhan");
 
-		AdmissionBean applicant2 = new AdmissionBean();
+		ApplicantDetailsBean applicant2 = new ApplicantDetailsBean();
 		applicant2.setApplicantName("vignesh");
 
-		AdmissionBean applicant3 = new AdmissionBean();
+		ApplicantDetailsBean applicant3 = new ApplicantDetailsBean();
 		applicant3.setApplicantName("Gopi");
 
-		ArrayList<AdmissionBean> applicantsList = new ArrayList<AdmissionBean>();
+		ArrayList<ApplicantDetailsBean> applicantsList = new ArrayList<ApplicantDetailsBean>();
 		applicantsList.add(applicant1);
 		applicantsList.add(applicant2);
 		applicantsList.add(applicant3);
 
 		return applicantsList;
 
-	}*/
+	}
 
 	//********** Retrieving details of a single applicant************//
-/*	@ResponseBody
+	@ResponseBody
 	@RequestMapping(value = "/applicants/{name}", method = RequestMethod.GET)
-	public AdmissionBean applicantDetails(@PathVariable("name") String applicantName) {
+	public ApplicantDetailsBean applicantDetails(@PathVariable("name") String applicantName) {
 
-		AdmissionBean details = new AdmissionBean();
+		ApplicantDetailsBean details = new ApplicantDetailsBean();
 		details.setApplicantName(applicantName);
 		details.setGender("male");
 
 		return details;
 
 	}
-	*/
-	@RequestMapping(value="/applicants/{name}", method = RequestMethod.PUT)
-	public boolean updateDetails(@PathVariable("name")String applicantName , @RequestBody AdmissionBean admissionBean) {
+	
+	@ResponseBody
+	@RequestMapping(value="/applicants/{name}", method = RequestMethod.PUT , consumes = MediaType.APPLICATION_XML_VALUE)
+	public boolean updateDetails(@PathVariable("name")String applicantName , @RequestBody ApplicantDetailsBean applicantDetailsBean) {
 		System.out.println("Applicants name: " + applicantName);
-		System.out.println("Applicants Details "+ admissionBean.getApplicantName() +"  " + admissionBean.getGender());
+		System.out.println("Applicants Details "+ applicantDetailsBean.getApplicantName() +"  " + applicantDetailsBean.getGender());
 		
 		return true;
 	}
