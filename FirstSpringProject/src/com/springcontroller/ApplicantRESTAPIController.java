@@ -2,7 +2,7 @@ package com.springcontroller;
 
 import java.util.ArrayList;
 
-import org.springframework.http.MediaType;
+import org.apache.tomcat.util.http.ContentType;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,7 +19,7 @@ public class ApplicantRESTAPIController {
 
 //	@ResponseBody  no need to specify if @RestController annotation is specified
 	@ResponseBody 
-	@RequestMapping(value = "/applicants", method = RequestMethod.GET , produces= MediaType.APPLICATION_JSON_VALUE )
+	@RequestMapping(value = "/applicants", method = RequestMethod.GET )
 	public ArrayList<ApplicantDetailsBean> getApplicantList() {
 
 		ApplicantDetailsBean applicant1 = new ApplicantDetailsBean();
@@ -54,7 +54,7 @@ public class ApplicantRESTAPIController {
 	}
 	
 	@ResponseBody
-	@RequestMapping(value="/applicants/{name}", method = RequestMethod.PUT , consumes = MediaType.APPLICATION_XML_VALUE)
+	@RequestMapping(value="/applicants/{name}", method = RequestMethod.PUT , headers = "ContentType = application/xml")
 	public boolean updateDetails(@PathVariable("name")String applicantName , @RequestBody ApplicantDetailsBean applicantDetailsBean) {
 		System.out.println("Applicants name: " + applicantName);
 		System.out.println("Applicants Details "+ applicantDetailsBean.getApplicantName() +"  " + applicantDetailsBean.getGender());

@@ -3,14 +3,11 @@ package com.springBean;
 import java.util.ArrayList;
 import java.util.Date;
 
-import org.codehaus.jackson.annotate.JsonIgnoreProperties;
-import org.codehaus.jackson.annotate.JsonProperty;
-import org.codehaus.jackson.annotate.JsonPropertyOrder;
-
-import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.springInterface.ApplicantAddress;
 
-@JsonInclude(JsonInclude.Include.NON_EMPTY)
 @JsonIgnoreProperties({ "applicantSkills" })
 @JsonPropertyOrder({ "applicant_name", "applicantAge", "gender", "applicantMobile", "applicantDob", "applicantSkills",
 		"applicantAddress" })
@@ -32,12 +29,10 @@ public class ApplicantDetailsBean {
 	private ApplicantAddress applicantAddress;
 
 	public String getApplicantName() {
-
 		return applicantName;
 	}
 
 	public void setApplicantName(String applicantName) {
-
 		this.applicantName = applicantName;
 	}
 
@@ -47,6 +42,14 @@ public class ApplicantDetailsBean {
 
 	public void setApplicantAge(long applicantAge) {
 		this.applicantAge = applicantAge;
+	}
+
+	public String getGender() {
+		return gender;
+	}
+
+	public void setGender(String gender) {
+		this.gender = gender;
 	}
 
 	public long getApplicantMobile() {
@@ -79,14 +82,6 @@ public class ApplicantDetailsBean {
 
 	public void setApplicantAddress(ApplicantAddress applicantAddress) {
 		this.applicantAddress = applicantAddress;
-	}
-
-	public String getGender() {
-		return gender;
-	}
-
-	public void setGender(String gender) {
-		this.gender = gender;
 	}
 
 }
