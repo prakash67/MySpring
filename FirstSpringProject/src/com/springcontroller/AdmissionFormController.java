@@ -81,7 +81,7 @@ public class AdmissionFormController {
 	}
 
 	@RequestMapping(value = "/admissionSubmission", method = RequestMethod.POST)
-	public ModelAndView admissionSubmission(@Valid @Autowired AdmissionBean admissionBean, BindingResult result) {
+	public ModelAndView admissionSubmission(@Valid @ModelAttribute("admission") AdmissionBean admissionBean, BindingResult result) {
 
 		/*
 		 * If we used @RequestParam instead of @Modelattribute we might write the code
@@ -101,8 +101,10 @@ public class AdmissionFormController {
 		admissionservice.currentDOB(admissionBean);
 
 		ModelAndView modelAndView = new ModelAndView("AdmissionFromSubmission");
+		
+		return modelAndView;
 
-		return modelAndView.addObject("admission", admissionBean);
+//		return modelAndView.addObject("admission", admissionBean);
 
 	}
 
